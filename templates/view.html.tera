@@ -1,0 +1,28 @@
+{% extends "base" %}
+{% block title %}
+    {{title}}
+{% endblock title %}
+{% block content %}
+<section class="hero is-light">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title">  {{title}}   </h1>
+            <h2 class="subtitle"> {{created}} </h2>
+        </div>
+    </div>
+</section>
+<section class="section">
+    <div class="box" style="width: 70%; white-space: pre-wrap;">{{content}}</div>
+    <div class="box level" style="width: 70%">
+        <div class="level-left">
+            <a class="button" href="/"> RETURN </a>
+            <a class="button" href="/update?id={{id}}"> EDIT </a>
+        </div>
+        <div class="level-left">
+            <form action="/delete?id={{id}}" method="post">
+                <button class="button is-danger is-light" type="submit"> DELETE </button>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock content %}

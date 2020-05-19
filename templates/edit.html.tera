@@ -1,0 +1,21 @@
+{% extends "base" %}
+{% block title %}
+    {{title}}
+{% endblock title %}
+{% block content %}
+<section class="section">
+    <form method="post">
+        <label class="label" for="title">Title:</label>
+        <input class="input" type="text" id="title" name="title" value="{{title}}"><br><br>
+
+        <label class="label" for="content">Content:</label>
+        <textarea class="textarea" id="content" name="content" rows="20">{{content}}</textarea><br><br>
+
+        <div class="box">
+                <a class="button" href="/"> RETURN </a>
+                <input class="button" type="submit" value="SAVE">
+        </div>
+    </form>
+
+</section>
+{% endblock content %}

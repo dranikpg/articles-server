@@ -1,0 +1,22 @@
+[package]
+name = "articlestore"
+version = "0.1.0"
+authors = ["Vladislav <vladislav.oleshko@gmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+dotenv="*"
+env_logger="*"
+log="*"
+
+chrono="*"
+
+serde={version="*", features = ["derive"]}
+
+rocket="*"
+rocket_contrib = {version="*", features = ["tera_templates"]}
+
+rusqlite={ version="*", features = ["chrono"]}
+tantivy = "*"

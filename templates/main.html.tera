@@ -1,0 +1,32 @@
+{% extends "base" %}
+{% block title %}
+    Articles
+{% endblock title %}
+{% block content %}
+    <section class="section">
+         <form class="box level">
+            {% if curq|length > 0 %}
+                <a class="button" href="/"> RETURN </a>
+            {% else %}
+                <a class="button" href="/update">Create</a>
+            {% endif %}
+            <input class="button" type="submit" value="SEARCH">
+            <input class="input is-narrow" type="text" id="q" name="q" value="{{curq}}">
+            <a class="button is-info is-light" href="https://docs.rs/tantivy/0.7.0/tantivy/query/struct.QueryParser.html">query rules?</a>
+         </form>
+    </section>
+    <section class="section">
+          <div>
+            <p> Number of articles <b>{{items | length}} <p>
+            <br>
+          </div>
+          <div class="list">
+          {% for a in items %}
+                <a class="list-item" href="/{{a.id}}">
+                    {{a.title}}
+                </a>
+          {% endfor %}
+          </div>
+    </section>
+
+{% endblock content %}
