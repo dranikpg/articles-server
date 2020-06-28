@@ -12,7 +12,7 @@
     </div>
 </section>
 <section class="section">
-    <div class="box" style="width: 70%; white-space: pre-wrap;">{{content}}</div>
+    <div class="box" style="width: 70%; white-space: pre-wrap;" id="content-wrap">{{content | safe}}</div>
     <div class="box level" style="width: 70%">
         <div class="level-left">
             <a class="button" href="/"> RETURN </a>

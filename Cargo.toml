@@ -12,11 +12,12 @@ env_logger="*"
 log="*"
 
 chrono="*"
-
 serde={version="*", features = ["derive"]}
 
-rocket="*"
+rocket="0.4.3"
 rocket_contrib = {version="*", features = ["tera_templates"]}
 
 rusqlite={ version="*", features = ["chrono"]}
 tantivy = "*"
+
+pulldown-cmark = "0.2"

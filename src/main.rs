@@ -13,6 +13,9 @@ extern crate rusqlite;
 #[macro_use]
 extern crate tantivy;
 
+
+extern crate pulldown_cmark;
+
 mod data;
 mod facade;
 mod textindex;

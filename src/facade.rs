@@ -40,12 +40,22 @@ pub fn search(q: String, db: State<Connection>, tv: State<TextIndex>) -> Option<
     Some(render_base(v, &q))
 }
 
+fn render_markdown(src: &str) -> String{
+    use pulldown_cmark::{html, Options, Parser};
+    let options = Options::empty();
+    let parser = Parser::new_ext(src, options);
+    let mut html_output: String = String::with_capacity(src.len() * 3 / 2);
+    html::push_html(&mut html_output, parser);
+    html_output
+}
+
 #[get("/<id>")]
 pub fn get(id: i32, db: State<Connection>) -> Option<Template> {
-    let dt = match db.get(id) {
+    let mut dt = match db.get(id) {
         Ok(Some(a)) => a,
         _ => return None,
     };
+    dt.content = render_markdown(&dt.content); 
     Some(Template::render("view", dt))
 }
 
