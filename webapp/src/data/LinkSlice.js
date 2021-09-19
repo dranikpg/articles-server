@@ -1,11 +1,12 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { apiFetch } from './utils';
 
 const initialState = {
     list: []
 }
 
 export const load = createAsyncThunk('link/reload', async () => {
-    const response = await fetch("/links");
+    const response = await apiFetch("/links");
     if (response.status === 200) {
         const json = await response.json();
         return json;

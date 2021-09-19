@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { apiFetch } from './utils';
 
 const initialState = {
     email: null,
@@ -12,7 +13,7 @@ const initialState = {
 }
 
 export const init = createAsyncThunk('user/init', async () => {
-    const response = await fetch("/user");
+    const response = await apiFetch("/user");
     const email = localStorage.getItem("email")
     if (response.status === 200) { // authorized
         return {
@@ -33,7 +34,7 @@ export const init = createAsyncThunk('user/init', async () => {
 });
 
 export const tryAuth = createAsyncThunk('user/auth', async ({email, password, register}) => {
-    const response = await fetch("/login?register="+register, {
+    const response = await apiFetch("/login?register="+register, {
         method: 'POST',
         body: JSON.stringify({
             email,
