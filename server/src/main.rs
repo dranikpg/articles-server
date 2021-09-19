@@ -44,8 +44,11 @@ async fn run() {
         Arc::new(analyzer)
     };
 
-    let security: security::Config = figment.extract_inner("security")
-        .expect("Failed to parse security");
+    let security = {
+        let config: security::Config = figment.extract_inner("security")
+            .expect("Failed to parse security");
+        Arc::new(config)
+    };
 
     // tmp code here:
 
