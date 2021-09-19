@@ -1,0 +1,5 @@
+/target
+Cargo.lock
+Rocket.toml
+.secret.key
+chromedriver
