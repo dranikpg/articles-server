@@ -157,7 +157,7 @@ class ArticlEdit extends React.Component {
     }
     
     renderEditPanel() {
-        const {liveContent, article} = this.state;
+        const {article} = this.state;
         const {tags} = this.props;
         const setLiveContent = (liveContent) => {
             this.setArticleField("content", liveContent);
@@ -221,11 +221,6 @@ class ArticlEdit extends React.Component {
 
         return <Box className={classes.content}>
             <Typography variant="h5">{article.title}</Typography>
-            <Typography className={classes.created_label} variant="caption" display="inline">
-                {article.created_on ? 
-                    moment(article.created_on, "YYYY-MM-DD").fromNow()
-                    : "today"}
-            </Typography>
             <Divider style={{marginBottom: '10px'}}/>
             <ArticleTags tags={article.tags}/>
             <ReactMarkdown rehypePlugins={[rehypeHighlight]} 

@@ -4,8 +4,7 @@ use comrak::{
 };
 use std::cell::RefCell;
 
-const MAX_PREVIEW_LEN: usize = 140;
-
+const MAX_PREVIEW_LEN: usize = 160;
 pub struct Info {
     pub preview: String,
     pub text: String,
@@ -25,9 +24,12 @@ pub fn extract_article(content: &str) -> Info {
                 text.borrow_mut().push(entry);
             }
         }
-        NodeValue::Link(NodeLink { ref url, .. }) => {
+        NodeValue::Link(NodeLink { ref url, ref title }) => {
             if let Ok(link) = String::from_utf8(url.to_owned()) {
                 links.borrow_mut().push(link);
+            }
+            if let Ok(entry) = String::from_utf8(title.to_owned()) {
+                text.borrow_mut().push(entry);
             }
         }
         _ => (),

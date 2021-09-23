@@ -50,8 +50,6 @@ async fn run() {
         Arc::new(config)
     };
 
-    // tmp code here:
-
     // register state
     let rocket = rocket
         .manage(db)
