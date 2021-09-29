@@ -213,6 +213,8 @@ pub async fn delete(db: &Db, user: i32, id: i32) -> Result<(), ArticleError> {
         Some(stored_user) if stored_user == user => (),
         _ => return Err(ArticleError::NotFound),
     };
+    // update links
+    super::links::delete_article_links(db, id).await?;
     // update tags
     super::tags::update_article_tags(db, user, id, &[]).await?;
     // delete
