@@ -78,7 +78,7 @@ pub async fn list(
         ARRAY_REMOVE(ARRAY_AGG(t.name), NULL) as tags,
         CASE WHEN coalesce($7, '') = ''
             THEN 0
-            ELSE ts_rank_cd(a.language, search_vector, plainto_tsquery(a.language, $7), 32)
+            ELSE ts_rank_cd(search_vector, plainto_tsquery(a.language, $7), 32)
         END AS rank,
         CASE WHEN coalesce($7, '') = ''
             THEN a.preview

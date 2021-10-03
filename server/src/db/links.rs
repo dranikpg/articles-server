@@ -131,7 +131,7 @@ pub async fn update_article_links(
 
 pub async fn delete_article_links(db: &Db, article: i32) 
 -> Result<(), sqlx::Error> {
-    sqlx::query("DELETE FROM links WHERE article_id = ?")
+    sqlx::query("DELETE FROM links WHERE article_id = $1")
         .bind(article)
         .execute(db).await?;
     Ok(())
