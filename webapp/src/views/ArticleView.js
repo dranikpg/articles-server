@@ -34,10 +34,10 @@ function ArticleView() {
         </Typography>
 
         <Typography variant="caption"> 
-            Updated {moment(article.updated_on, "YYYY-MM-DD").fromNow()}
+            Updated {moment(article.updated_on).fromNow()}
         </Typography>
         <Typography variant="caption"> 
-            Created {moment(article.created_on, "YYYY-MM-DD").fromNow()}
+            Created {moment(article.created_on).fromNow()}
         </Typography>
     
         <Grid container

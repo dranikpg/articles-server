@@ -17,7 +17,11 @@ thiserror="*"
 
 chrono="*"
 
+cookie="*"
+time="^0.2"
+
 comrak="*"
+
 whatlang="*"
 thirtyfour = {version = "*", features = ["tokio"]}
 

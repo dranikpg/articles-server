@@ -60,5 +60,10 @@ pub async fn login(
 // ========================== HELPERS =====================
 
 pub fn store_token(cookies: &CookieJar<'_>, token: String) {
-    cookies.add(Cookie::new("jwt".to_owned(), token.to_owned()));
+    let c = {
+        let mut c = Cookie::new("jwt".to_owned(), token.to_owned());
+        c.set_expires(time::OffsetDateTime::now_utc() + time::Duration::weeks(2));
+        c
+    };
+    cookies.add(c);
 }
