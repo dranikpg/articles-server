@@ -65,7 +65,8 @@ function ArticleFeed() {
     const [filter, setFilter] = useState({
         tags: [],
         allTags: false,
-        query: ""
+        query: "",
+        sortBy: "created"
     });
     const [rawQuery, setRawQuery] = useState("");
     const debouncedQueryFilterUpdate = useRef(debounce((rq) => {
@@ -80,7 +81,8 @@ function ArticleFeed() {
         let query = {
             from: fresh ? 0 : articles.list.length,
             limit: 10,
-            all_tags: filter.allTags
+            all_tags: filter.allTags,
+            sort_by: filter.sortBy
         };
         if (tagids && tagids.length > 0) {
             query.tags = tagids;
@@ -152,7 +154,7 @@ function ArticleFeed() {
         />
         <Grid container
             spacing={2}
-            alignItems="center">
+            alignItems="flex-end">
             <Grid item xs={10}>
                 <Autocomplete
                     multiple
@@ -175,13 +177,20 @@ function ArticleFeed() {
                       )}
                 />
             </Grid>
-            <Grid item xs={2}>
+            <Grid item xs={1}>
                 <FormControlLabel control={
                     <Switch size="small" 
                         checked = {filter.allTags}
                         onChange = {(e) => setFilter({...filter, allTags: e.target.checked})}
                     />} 
                 label="&&"/>
+            </Grid>
+            <Grid item xs={1}>
+                <Button variant="outlined" size="small"
+                    onClick={() => setFilter({...filter, sortBy: filter.sortBy == "created" ? "updated" : "created"})}
+                    >
+                    {filter.sortBy}
+                </Button>
             </Grid>
         </Grid>
 

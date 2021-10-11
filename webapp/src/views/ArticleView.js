@@ -36,6 +36,7 @@ function ArticleView() {
         <Typography variant="caption"> 
             Updated {moment(article.updated_on).fromNow()}
         </Typography>
+        &nbsp;&nbsp;
         <Typography variant="caption"> 
             Created {moment(article.created_on).fromNow()}
         </Typography>
